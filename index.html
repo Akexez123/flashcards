@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Алгебра: Карточки</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Карточки по Алгебре</h1>
+    <div class="card" id="flashcard">
+      <div class="front" id="question">Загрузка...</div>
+      <div class="back" id="answer"></div>
+    </div>
+    <div class="buttons">
+      <button onclick="flipCard()">Показать ответ</button>
+      <button onclick="nextCard()">Следующая</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
