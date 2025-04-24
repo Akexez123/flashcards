@@ -1,23 +1,35 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Алгебра: Карточки</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивные карточки</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Карточки по Алгебре</h1>
-    <div class="card" id="flashcard">
-      <div class="front" id="question">Загрузка...</div>
-      <div class="back" id="answer"></div>
+    <div class="container">
+        <div class="theme-toggle">
+            <label for="theme-switch" class="theme-label">Темная/светлая тема</label>
+            <input type="checkbox" id="theme-switch" class="theme-switch">
+        </div>
+
+        <div class="card-container">
+            <div class="flashcard" id="flashcard-1">
+                <div class="front">
+                    <img src="https://via.placeholder.com/100" alt="Иконка" class="icon">
+                    <h2>Собака</h2>
+                </div>
+                <div class="back">
+                    <p>Животное, известное своей верностью и дружелюбностью.</p>
+                </div>
+            </div>
+
+            <!-- Добавить больше карточек по аналогии -->
+
+        </div>
     </div>
-    <div class="buttons">
-      <button onclick="flipCard()">Показать ответ</button>
-      <button onclick="nextCard()">Следующая</button>
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
