@@ -1,39 +1,92 @@
-const flashcards = [
-  {
-    question: "Формула разности квадратов?",
-    answer: "a² - b² = (a - b)(a + b)"
-  },
-  {
-    question: "Что такое a^(-n)?",
-    answer: "1 / a^n"
-  },
-  {
-    question: "Как выглядит формула квадрата суммы?",
-    answer: "(a + b)² = a² + 2ab + b²"
-  }
-];
-
-let currentIndex = 0;
-const card = document.getElementById("flashcard");
-const questionDiv = document.getElementById("question");
-const answerDiv = document.getElementById("answer");
-
-function showCard(index) {
-  const flashcard = flashcards[index];
-  questionDiv.textContent = flashcard.question;
-  answerDiv.textContent = flashcard.answer;
-  card.classList.remove("flipped");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-function flipCard() {
-  card.classList.toggle("flipped");
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
 }
 
-function nextCard() {
-  currentIndex = (currentIndex + 1) % flashcards.length;
-  showCard(currentIndex);
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
 }
 
-window.onload = () => {
-  showCard(currentIndex);
-};
+.theme-toggle {
+    margin-bottom: 30px;
+}
+
+.theme-switch {
+    margin-left: 10px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.flashcard {
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+    margin-bottom: 20px;
+}
+
+.flashcard .front, .flashcard .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s;
+}
+
+.flashcard .front {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flashcard .back {
+    background-color: #e2e2e2;
+    color: #333;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+}
+
+.flashcard:hover .front {
+    transform: rotateY(180deg);
+}
+
+.flashcard .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.flashcard h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.flashcard p {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.theme-switch:checked ~ .card-container {
+    background-color: #333;
+    color: #fff;
+}
+
+.theme-switch:checked ~ .card-container .flashcard {
+    background-color: #444;
+}
+
