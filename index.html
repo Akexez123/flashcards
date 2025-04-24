@@ -9,27 +9,64 @@
 </head>
 <body>
     <div class="container">
-        <div class="theme-toggle">
-            <label for="theme-switch" class="theme-label">Темная/светлая тема</label>
-            <input type="checkbox" id="theme-switch" class="theme-switch">
+        <!-- Меню выбора категорий -->
+        <div class="menu">
+            <button onclick="showCategory('animals')">Животные</button>
+            <button onclick="showCategory('fruits')">Фрукты</button>
+            <button onclick="showCategory('tech')">Технологии</button>
         </div>
 
-        <div class="card-container">
-            <div class="flashcard" id="flashcard-1">
-                <div class="front">
-                    <img src="https://via.placeholder.com/100" alt="Иконка" class="icon">
-                    <h2>Собака</h2>
-                </div>
-                <div class="back">
-                    <p>Животное, известное своей верностью и дружелюбностью.</p>
-                </div>
-            </div>
-
-            <!-- Добавить больше карточек по аналогии -->
-
+        <!-- Контейнер с карточками -->
+        <div class="card-container" id="card-container">
+            <!-- Карточки будут динамически добавляться через JS -->
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Данные для карточек
+        const cards = {
+            animals: [
+                { title: 'Собака', description: 'Животное, известное своей верностью.', icon: 'https://via.placeholder.com/60?text=Dog' },
+                { title: 'Кошка', description: 'Животное, известное своей независимостью.', icon: 'https://via.placeholder.com/60?text=Cat' },
+                { title: 'Птица', description: 'Животное, которое может летать.', icon: 'https://via.placeholder.com/60?text=Bird' },
+            ],
+            fruits: [
+                { title: 'Яблоко', description: 'Красный фрукт с хрустящей текстурой.', icon: 'https://via.placeholder.com/60?text=Apple' },
+                { title: 'Банан', description: 'Желтый фрукт с мягким вкусом.', icon: 'https://via.placeholder.com/60?text=Banana' },
+                { title: 'Груша', description: 'Фрукт с сочным и сладким вкусом.', icon: 'https://via.placeholder.com/60?text=Pear' },
+            ],
+            tech: [
+                { title: 'Смартфон', description: 'Устройство для общения и работы.', icon: 'https://via.placeholder.com/60?text=Phone' },
+                { title: 'Ноутбук', description: 'Компьютер для работы и развлечений.', icon: 'https://via.placeholder.com/60?text=Laptop' },
+                { title: 'Планшет', description: 'Мобильное устройство для работы и просмотра контента.', icon: 'https://via.placeholder.com/60?text=Tablet' },
+            ]
+        };
+
+        // Функция для отображения карточек в зависимости от категории
+        function showCategory(category) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = '';  // Очищаем контейнер перед загрузкой новой категории
+
+            cards[category].forEach(card => {
+                const flashcard = document.createElement('div');
+                flashcard.classList.add('flashcard');
+                
+                flashcard.innerHTML = `
+                    <div class="front">
+                        <img src="${card.icon}" alt="${card.title}">
+                        <h2>${card.title}</h2>
+                    </div>
+                    <div class="back">
+                        <p>${card.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(flashcard);
+            });
+        }
+
+        // Загружаем категорию "Животные" по умолчанию
+        showCategory('animals');
+    </script>
 </body>
 </html>
