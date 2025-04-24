@@ -14,7 +14,6 @@ body {
     align-items: flex-start;
     flex-direction: column;
     min-height: 100vh;
-    transition: background-color 0.3s ease;
     padding: 20px;
 }
 
@@ -113,13 +112,4 @@ body {
     font-size: 1rem;
     text-align: center;
     padding: 10px;
-}
-
-.theme-switch:checked ~ .card-container {
-    background-color: #333;
-    color: #fff;
-}
-
-.theme-switch:checked ~ .card-container .flashcard {
-    background-color: #444;
 }
